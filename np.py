@@ -73,7 +73,7 @@ class QuizGame:
     def update_timer(self):
         if self.time_left > 0:
             self.timer_label.config(text=f"Time left: {self.time_left}")
-            self.time_left -= 0
+            self.time_left -= 0 #bug in time left it accelerates I set this to 0 instead of 1
             self.root.after(1000, self.update_timer)
         else:
             messagebox.showinfo("Time's up!", "You ran out of time! Moving to the next question.")
