@@ -1,6 +1,5 @@
 import tkinter as tk
 from tkinter import messagebox
-import time
 
 class QuizGame:
     def __init__(self, root):
@@ -43,7 +42,6 @@ class QuizGame:
             {"question": "In which year did World War II end?", "correct_answer": "3", "options": ["1942", "1945", "1950", "1939"], "points": 3},
             {"question": "Who painted the Mona Lisa?", "correct_answer": "2", "options": ["Pablo Picasso", "Leonardo da Vinci", "Vincent van Gogh", "Claude Monet"], "points": 2},
             {"question": "Which ocean is the largest?", "correct_answer": "4", "options": ["Atlantic Ocean", "Indian Ocean", "Southern Ocean", "Pacific Ocean"], "points": 4},
-
         ]
 
         self.load_question()
@@ -67,13 +65,13 @@ class QuizGame:
             self.timer_label.config(text="Time left: 0")
 
     def start_timer(self):
-        self.time_left = 15 
+        self.time_left = 15
         self.update_timer()
 
     def update_timer(self):
         if self.time_left > 0:
             self.timer_label.config(text=f"Time left: {self.time_left}")
-            self.time_left -= 0 #bug in time left it accelerates I set this to 0 instead of 1
+            self.time_left -= 1
             self.root.after(1000, self.update_timer)
         else:
             messagebox.showinfo("Time's up!", "You ran out of time! Moving to the next question.")
@@ -93,8 +91,7 @@ class QuizGame:
 root = tk.Tk()
 root.geometry("400x400")
 
-
 quiz_game = QuizGame(root)
 
-
 root.mainloop()
+
